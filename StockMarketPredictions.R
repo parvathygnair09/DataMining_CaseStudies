@@ -7,7 +7,9 @@
 source("requirements.R")
 library(DBI)
 library(RMySQL)
+library(xts)
 
-drv <- dbDriver("MySQL")
 ch <- dbConnect(dbDriver("MySQL"), user = user, password = password, dbname = dbname, host = host, port = port)
-
+allQuotes <- dbGetQuery(ch, "SELECT * FROM gspc" )
+GSPC <- xts(allQuotes[,-1],order.by=as.Date(allQuotes[,1]))
+head(GSPC)
