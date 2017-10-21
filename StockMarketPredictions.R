@@ -13,3 +13,4 @@ ch <- dbConnect(dbDriver("MySQL"), user = user, password = password, dbname = db
 allQuotes <- dbGetQuery(ch, "SELECT * FROM gspc" )
 GSPC <- xts(allQuotes[,-1],order.by=as.Date(allQuotes[,1]))
 head(GSPC)
+str(GSPC)
