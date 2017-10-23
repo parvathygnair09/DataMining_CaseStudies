@@ -4,13 +4,20 @@
 ## Date Created : 10/20/2017
 ## =====================================================================================================
 
+rm(list = ls(all = TRUE))
 source("requirements.R")
+
+## Load the necessary packages
 library(DBI)
 library(RMySQL)
 library(xts)
 
+## Create connection to MySQL
 ch <- dbConnect(dbDriver("MySQL"), user = user, password = password, dbname = dbname, host = host, port = port)
+
+## Extract the data table
 allQuotes <- dbGetQuery(ch, "SELECT * FROM gspc" )
 GSPC <- xts(allQuotes[,-1],order.by=as.Date(allQuotes[,1]))
 head(GSPC)
 str(GSPC)
+
