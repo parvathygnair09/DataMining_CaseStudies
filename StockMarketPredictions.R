@@ -26,5 +26,6 @@ head(GSPC)
 str(GSPC)
 
 dbDisconnect(ch)
-
+setSymbolLookup(GSPC=list(name='gspc',src='mysql', db.fields=c('Index','Open','High','Low','Close','Volume','AdjClose'), user= user,password= password,dbname=dbname))
+getSymbols('GSPC')
 
