@@ -25,6 +25,6 @@ GSPC <- xts(allQuotes[,-1],order.by=as.Date(allQuotes[,1]))
 head(GSPC)
 str(GSPC)
 
-summary(GSPC)
+dbDisconnect(ch)
 
 
